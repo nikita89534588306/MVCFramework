@@ -9,7 +9,7 @@
 				// echo "Путь из URL строки : " .$request->getPath() ."<br/>"; 	// выводим URI(для отладки)
 				// echo "Метод запроса : " .$request->getMethod() ."<br/>"; // выводим метод запроса(для отладки)
 			
-			$this->router = new Router();
+			$this->router = new Router(); //создаем экземпляр класса Маршрутиризатор(Router)
 			
 		}
 	}
