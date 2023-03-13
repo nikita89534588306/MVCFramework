@@ -1,10 +1,9 @@
 <?php 
 	//echo "Точка входа в приложение index.php"; //Файл индекс является единой точкой входа в приложение.
 	
-	
-	//Cоздаем экземпляр класса который является самим приложением
-		//Подключаем класс из ядра библиотеки MVCFramework
-		require_once("./core/Application.php");
-		//создаем экземпляр класса Application
+	//Подключаем автозагрузчик Composer
+	require_once __DIR__ . "/vendor/autoload.php";
+	//Указываем пространство имен и создаем экземпляр класса Приложение
+		use app\core\Application;
 		$app = new Application();
 		
