@@ -2,7 +2,6 @@
 	namespace app\core;
 	class Request{
 		public function __construct(){
-			// echo "Приложение созданно!<br/>";
 
 		}
 		public function getPath(){
