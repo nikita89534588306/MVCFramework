@@ -5,8 +5,8 @@
 		public function __construct(){
 			// echo "Приложение созданно!<br/>";
 			$request = new Request(); //создаем экземпляр класса Запрос(Request)
-				echo $request->getPath(); 	// выводим URI(для отладки)
-				echo $request->getMethod(); // выводим метод запроса(для отладки)
+				echo $request->getPath() ."<br/>"; 	// выводим URI(для отладки)
+				echo "Метод запроса : " .$request->getMethod() ."<br/>"; // выводим метод запроса(для отладки)
 			
 			
 		}

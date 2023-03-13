@@ -8,7 +8,7 @@
 			return "Путь из строки ULR";
 		}
 		public function getMethod(){
-			return "Метод запроса...";
+			return strtolower($_SERVER['REQUEST_METHOD']);
 		}
 		
 	}
