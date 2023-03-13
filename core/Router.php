@@ -24,8 +24,9 @@
 				echo "Not found"; //выводи сообщение об ошибке
 				exit();	
 			}
-			else
-				echo call_user_func($callback);
+			else //иначе
+				echo call_user_func($callback); //выводим то что вернет нам функция обратного вызова
+				
 		}
 
 		
