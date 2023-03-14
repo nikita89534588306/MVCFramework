@@ -31,10 +31,21 @@
 		}
 
 		public function renderView($nameView){
-			ob_start();
-			include_once __DIR__."/../views/$nameView.php"; 
-			return ob_get_clean();
+			$layoutContent = $this->layoutContent();
+			$viewContent = $this->renderOnlyView($nameView);
+			// ob_start();
+			// include_once Application::$ROOT_DIR ."/views/$nameView.php"; 
+			return str_replace('{{content}}', $viewContent, $layoutContent);
 		}
 
-		
+		protected function layoutContent(){
+			ob_start();
+			include_once Application::$ROOT_DIR."/views/layouts/main.php"; 
+			return ob_get_clean();
+		}
+		protected function renderOnlyView($nameView){
+			ob_start();
+			include_once Application::$ROOT_DIR ."/views/$nameView.php"; 
+			return ob_get_clean();
+		}
 	}

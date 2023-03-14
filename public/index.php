@@ -5,7 +5,7 @@
 	require_once __DIR__ . "/../vendor/autoload.php";
 	//Указываем пространство имен и создаем экземпляр класса Приложение
 	use app\core\Application;
-	$app = new Application();
+	$app = new Application(dirname(__DIR__));
 		
 	//Зарегистрируем маршруты для приложения
 	$app->router->get('/', function(){
