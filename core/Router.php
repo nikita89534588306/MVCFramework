@@ -21,13 +21,19 @@
 			//если такой функции нет то присваиваем переменной строку "Not found"
 			$callback = $this->routes[$currentMethod][$currentPath] ?? "Not found";
 			if($callback === "Not found") { //если функция не найдена
-				echo "Not found"; //выводи сообщение об ошибке
-				exit();	
+				return "Not found"; //выводи сообщение об ошибке
 			}
-			else if(is_string($callback)) include_once __DIR__."/../views/$callback.php"; 
-			else //иначе
-				echo call_user_func($callback); //выводим то что вернет нам функция обратного вызова
-				
+			else if(is_string($callback)) {
+				$nameView = $callback; //если строка то интерпритируем её как имя Представление
+				return $this->renderView($nameView); //отрисовываем Представление по имени Представления
+			}
+			else return call_user_func($callback); //выводим то что вернет нам функция обратного вызова
+		}
+
+		public function renderView($nameView){
+			ob_start();
+			include_once __DIR__."/../views/$nameView.php"; 
+			return ob_get_clean();
 		}
 
 		
