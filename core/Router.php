@@ -24,6 +24,7 @@
 				echo "Not found"; //выводи сообщение об ошибке
 				exit();	
 			}
+			else if(is_string($callback)) include_once __DIR__."/../views/$callback.php"; 
 			else //иначе
 				echo call_user_func($callback); //выводим то что вернет нам функция обратного вызова
 				
