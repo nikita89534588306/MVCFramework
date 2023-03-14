@@ -8,9 +8,7 @@
 	$app = new Application(dirname(__DIR__));
 		
 	//Зарегистрируем маршруты для приложения
-	$app->router->get('/', function(){
-		return "Home page";
-	});
+	$app->router->get('/', 'home');
 
 	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
 	$app->router->get('/contact', 'contact');

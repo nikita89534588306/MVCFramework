@@ -32,9 +32,7 @@
 
 		public function renderView($nameView){
 			$layoutContent = $this->layoutContent();
-			$viewContent = $this->renderOnlyView($nameView);
-			// ob_start();
-			// include_once Application::$ROOT_DIR ."/views/$nameView.php"; 
+			$viewContent = $this->renderOnlyView($nameView); 
 			return str_replace('{{content}}', $viewContent, $layoutContent);
 		}
 
