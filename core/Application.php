@@ -5,12 +5,16 @@
 
 		public Request $request;
 		public Router $router;
+		public Response $response;
+		
 		public function __construct($rootPath){
 
 			self::$ROOT_DIR = $rootPath;
 			
 			$this->request = new Request(); //создаем экземпляр класса Запрос(Request)
-			$this->router = new Router($this->request); //создаем экземпляр класса Маршрутиризатор(Router) и передаем экземпляр класса Запрос для получения текущего состояния URI 
+			$this->response = new Response();
+			$this->router = new Router($this->request, $this->response); //создаем экземпляр класса Маршрутиризатор(Router) и передаем экземпляр класса Запрос для получения текущего состояния URI 
+			
 		}
 		//данная функция выводи результат работы приложения
 		public function run(){
