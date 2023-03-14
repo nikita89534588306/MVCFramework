@@ -12,8 +12,7 @@
 		return "Home page";
 	});
 
-	$app->router->get('/contact', function(){
-		return "About us";
-	});
+	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
+	$app->router->get('/contact', 'contact');
 
 	$app->run(); //запуск приложение на выполнение
