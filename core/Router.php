@@ -2,8 +2,10 @@
 	namespace app\core;
 	class Router{
 		public Request $request;
-		public function __construct(Request $request){
+		public Response $response;
+		public function __construct(Request $request, Response $response){
 			$this->request = $request;
+			$this->response = $response;
 		}
 		protected array $routes = []; //содержит в себе имя метода, путь и функцию обратного вызова
 		
@@ -21,6 +23,7 @@
 			//если такой функции нет то присваиваем переменной строку "Not found"
 			$callback = $this->routes[$currentMethod][$currentPath] ?? "Not found";
 			if($callback === "Not found") { //если функция не найдена
+				$this->response->setStatusCode(404);
 				return "Not found"; //выводи сообщение об ошибке
 			}
 			else if(is_string($callback)) {
