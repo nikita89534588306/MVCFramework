@@ -13,4 +13,8 @@
 	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
 	$app->router->get('/contact', 'contact');
 
+	$app->router->post('/contact', function(){
+		return "heandeling submitted data";
+	});
+
 	$app->run(); //запуск приложение на выполнение
