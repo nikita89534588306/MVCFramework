@@ -26,7 +26,7 @@
 			$callback = $this->routes[$currentMethod][$currentPath] ?? "Not found";
 			if($callback === "Not found") { //если функция не найдена
 				$this->response->setStatusCode(404);
-				return "Not found"; //выводи сообщение об ошибке
+				return $this->renderView("_404"); //выводи сообщение об ошибке
 			}
 			else if(is_string($callback)) {
 				$nameView = $callback; //если строка то интерпритируем её как имя Представление
