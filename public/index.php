@@ -14,8 +14,7 @@
 	$app->router->get('/', 'home');
 
 	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
-	$app->router->get('/contact', 'contact');
-
+	$app->router->get('/contact', [SiteController::class, 'contact']);
 	$app->router->post('/contact', [SiteController::class, 'handleContact']);
 
 	$app->run(); //запуск приложение на выполнение

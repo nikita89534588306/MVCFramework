@@ -24,11 +24,7 @@
 			//то присваеваем её переменной $callback
 			//если такой функции нет то присваиваем переменной строку "Not found"
 			$callback = $this->routes[$currentMethod][$currentPath] ?? "Not found";
-			
-			echo "<pre>";
-				var_dump($callback);
-				echo "</pre>";
-			
+
 			if($callback === "Not found") { //если функция не найдена
 				$this->response->setStatusCode(404);
 				return $this->renderView("_404"); //выводи сообщение об ошибке
