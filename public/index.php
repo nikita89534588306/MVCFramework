@@ -12,8 +12,6 @@
 		
 	//Зарегистрируем маршруты для приложения
 	$app->router->get('/', [SiteController::class, 'home']);
-
-	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
 	$app->router->get('/contact', [SiteController::class, 'contact']);
 	$app->router->post('/contact', [SiteController::class, 'handleContact']);
 
