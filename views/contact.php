@@ -1,6 +1,6 @@
 <h1>Contact phone: 9-999-999-99-99</h1>
 
-<form>
+<form action="" method="post">
   <div class="mb-3">
     <label for="subject" class="form-label">Subject</label>
     <input type="text" name="subject" class="form-control" >
