@@ -11,7 +11,7 @@
 	$app = new Application(dirname(__DIR__));
 		
 	//Зарегистрируем маршруты для приложения
-	$app->router->get('/', 'home');
+	$app->router->get('/', [SiteController::class, 'home']);
 
 	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
 	$app->router->get('/contact', [SiteController::class, 'contact']);

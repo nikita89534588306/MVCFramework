@@ -37,9 +37,10 @@
 			else return call_user_func($callback); //выводим то что вернет нам функция обратного вызова
 		}
 
-		public function renderView($nameView){
+		public function renderView($nameView, $params = []){
+
 			$layoutContent = $this->layoutContent();
-			$viewContent = $this->renderOnlyView($nameView); 
+			$viewContent = $this->renderOnlyView($nameView, $params); 
 			return str_replace('{{content}}', $viewContent, $layoutContent);
 		}
 
@@ -48,7 +49,8 @@
 			include_once Application::$ROOT_DIR."/views/layouts/main.php"; 
 			return ob_get_clean();
 		}
-		protected function renderOnlyView($nameView){
+		protected function renderOnlyView($nameView, $params){
+			foreach($params as $key=>$value) $$key = $value;
 			ob_start();
 			include_once Application::$ROOT_DIR ."/views/$nameView.php"; 
 			return ob_get_clean();
