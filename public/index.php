@@ -4,7 +4,10 @@
 	//Подключаем автозагрузчик Composer
 	require_once __DIR__ . "/../vendor/autoload.php";
 	//Указываем пространство имен и создаем экземпляр класса Приложение
+
+	use app\controllers\SiteController;
 	use app\core\Application;
+
 	$app = new Application(dirname(__DIR__));
 		
 	//Зарегистрируем маршруты для приложения
@@ -13,8 +16,6 @@
 	//в данном случае Маршрутризатор связывает маршрут с представлением напрямую
 	$app->router->get('/contact', 'contact');
 
-	$app->router->post('/contact', function(){
-		return "heandeling submitted data";
-	});
+	$app->router->post('/contact', [SiteController::class, 'handleContact']);
 
 	$app->run(); //запуск приложение на выполнение

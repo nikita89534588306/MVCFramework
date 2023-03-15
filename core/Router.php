@@ -24,6 +24,11 @@
 			//то присваеваем её переменной $callback
 			//если такой функции нет то присваиваем переменной строку "Not found"
 			$callback = $this->routes[$currentMethod][$currentPath] ?? "Not found";
+			
+			echo "<pre>";
+				var_dump($callback);
+				echo "</pre>";
+			
 			if($callback === "Not found") { //если функция не найдена
 				$this->response->setStatusCode(404);
 				return $this->renderView("_404"); //выводи сообщение об ошибке
@@ -32,6 +37,7 @@
 				$nameView = $callback; //если строка то интерпритируем её как имя Представление
 				return $this->renderView($nameView); //отрисовываем Представление по имени Представления
 			}
+			else if(is_array($callback)) return call_user_func([new $callback[0],$callback[1]]);
 			else return call_user_func($callback); //выводим то что вернет нам функция обратного вызова
 		}
 
