@@ -33,8 +33,8 @@
 				$nameView = $callback; //если строка то интерпритируем её как имя Представление
 				return $this->renderView($nameView); //отрисовываем Представление по имени Представления
 			}
-			else if(is_array($callback)) return call_user_func([new $callback[0],$callback[1]]);
-			else return call_user_func($callback); //выводим то что вернет нам функция обратного вызова
+			else if(is_array($callback)) $callback[0] = new $callback[0]();
+			return call_user_func($callback, $this->request); //выводим то что вернет нам функция обратного вызова
 		}
 
 		public function renderView($nameView, $params = []){
