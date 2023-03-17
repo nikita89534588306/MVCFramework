@@ -9,5 +9,5 @@
 		public function validate(){
 
 		}
-		
+		abstract function register();
 	}
