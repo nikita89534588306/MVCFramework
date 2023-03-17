@@ -19,7 +19,21 @@
 		}
 		public array $errors = [];
 		public function validate(){
+			foreach($this->rules() as $attribute => $rules) { //итерируемся по всем атрибутам указанным в правилах валидации...
+				$value = $this->{$attribute}; // и получаем значение введенное от пользователя
+				foreach ($rules as $rule){ //далее перебираем все правила валидации
+					if(is_array($rule) && !empty($rule[0])) $ruleName = $rule[0]; //если правило является массивом то имя правила хранится в элементе с первым индексом
+					else if(is_string($rule)) $ruleName = $rule; //если строка то это и есть имя правила
 
+					//далее идет логика для валидации
+					if(
+						$ruleName === self::RULE_REQUIRED //если атрибут обязательный
+						&& !$value //и данных от пользователя нет
+					){
+						$this->addError($attribute, self::RULE_REQUIRED); //в массив в с ошибками добавляем ошибку "ПОЛЕ ОБЯЗАТЕЛЬНО" 
+					}  
+				}
+			}
 		}
 		abstract function rules():array;
 	}
