@@ -36,5 +36,18 @@
 			}
 			return empty($this->errors);
 		}
+		public function addError(string $attribute, string $rule){
+			$message = $this->errorMessages()[$rule] ?? '';
+			$this->errors[$attribute][] = $rule;
+		}
+		public function errorMessages(){
+			return[
+				self::RULE_REQUIRED => 'Поле обязательное для заполнения',
+				self::RULE_EMAIL => 'Введите email адрес',
+				self::RULE_MIN => 'Минимальное количество символов {min}',
+				self::RULE_MAX => 'Максимальное количество символов {max}',
+				self::RULE_MATCH => 'Значение поля должно совпадать с {match}'
+			];
+		}
 		abstract function rules():array;
 	}
