@@ -38,7 +38,7 @@
 		}
 		public function addError(string $attribute, string $rule){
 			$message = $this->errorMessages()[$rule] ?? '';
-			$this->errors[$attribute][] = $rule;
+			$this->errors[$attribute][] = $message;
 		}
 		public function errorMessages(){
 			return[
