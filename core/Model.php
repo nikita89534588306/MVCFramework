@@ -17,6 +17,7 @@
 				}
 			}
 		}
+		public array $errors = [];
 		public function validate(){
 
 		}
