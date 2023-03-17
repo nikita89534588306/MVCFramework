@@ -5,6 +5,7 @@ use app\core\Request;
 
 	class AuthController extends Controller{
 		public function login(){
+			$this->setLayout("auth");
 			return $this->render('login');
 		}
 		public function register(Request $request){
@@ -12,6 +13,7 @@ use app\core\Request;
 			// по этому мы должны получить класс Запрос в качестве аргумента и
 			// проанализировав метод выполняем действие
 			if($request->isPost()) return "Hendeling data user";
+			$this->setLayout("auth");
 			return $this->render('register');
 		}
 		

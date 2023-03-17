@@ -7,7 +7,16 @@
 		public Request $request;
 		public Router $router;
 		public Response $response;
+		public Controller $controller;
 
+		public function getController():\app\core\Controller
+		{
+			return $this->controller;
+		}
+		public function setController($setController):void
+		{
+			$this->controller = $setController;
+		}
 		public function __construct($rootPath){
 
 			self::$ROOT_DIR = $rootPath;
