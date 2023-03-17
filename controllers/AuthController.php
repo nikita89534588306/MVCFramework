@@ -13,10 +13,10 @@
 			
 			
 		$registerModel = new RegisterModel(); //создаем модель для регистрации 
-
+		
 		if($request->isPost()) { //если метод HTTP - POST
 			$registerModel->loadData($request->getBody()); //загрузаем данные в модель (данные и Запроса)
-			
+		
 			if($registerModel->validate()  	// если пройдена валидация
 			&& $registerModel->register() 	//и данные добавленны в бд(метод register уникальный для модели регистрации и описан в нутри класса) 
 			) return "Success";  //выводим сообщение об успешной регистрации
