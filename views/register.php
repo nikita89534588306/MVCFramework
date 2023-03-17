@@ -4,9 +4,9 @@
 	<div class="row">
 		<div class="col">  
 			<div class="mb-3">
-			<label for="firstname" class="form-label">Firstname</label>
-			<input type="text" name="firstname" class="form-control" >
-		</div>
+				<label for="firstname" class="form-label">Firstname</label>
+				<input type="text" name="firstname" class="form-control" >
+			</div>
 		</div>
 		<div class="col">
 			<div class="mb-3">
