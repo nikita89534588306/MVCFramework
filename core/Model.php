@@ -33,6 +33,7 @@
 						$this->addError($attribute, self::RULE_REQUIRED); //в массив в с ошибками добавляем ошибку "ПОЛЕ ОБЯЗАТЕЛЬНО" 
 					}
 					if($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL) ) $this->addError($attribute, self::RULE_EMAIL); //валидация по email
+					
 				}
 			}
 			return empty($this->errors);
