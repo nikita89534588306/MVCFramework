@@ -6,4 +6,8 @@
 		public function loadData($data){
 
 		}
+		public function validate(){
+
+		}
+		
 	}
