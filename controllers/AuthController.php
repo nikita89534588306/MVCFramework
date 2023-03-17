@@ -11,7 +11,7 @@
 		}
 		public function register(Request $request){
 			
-			
+		$this->setLayout("auth");
 		$registerModel = new RegisterModel(); //создаем модель для регистрации 
 		
 		if($request->isPost()) { //если метод HTTP - POST
@@ -32,7 +32,7 @@
 		}
 
 		//вывод представления для метода GET
-			$this->setLayout("auth");
+			
 			return $this->render('register',
 				['model' => $registerModel ]
 			);
