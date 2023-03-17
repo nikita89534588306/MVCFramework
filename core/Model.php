@@ -13,5 +13,5 @@
 		public function validate(){
 
 		}
-		abstract function register();
+		abstract function rules():array;
 	}

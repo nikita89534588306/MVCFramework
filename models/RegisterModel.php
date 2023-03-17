@@ -9,7 +9,11 @@
 		public string $password;
 		public string $confirmPassword;
 
-		public function register(){
+		public function rules():array{ //правила для валидации данных
+			return [];
+		}
+		
+		public function register() { //функция регистрации данных пользователя в БД
 
 		}
 	}
