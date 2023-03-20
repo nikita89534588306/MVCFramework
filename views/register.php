@@ -5,7 +5,8 @@
 		<div class="col">  
 			<div class="mb-3">
 				<label for="firstname" class="form-label">Firstname</label>
-				<input type="text" name="firstname" class="form-control" value="<?php echo $model->firstname?>">
+				<input type="text" name="firstname" class="form-control <?php echo $model->hasError('firstname') ? ' is-invalid' : '' ?>" 
+					value="<?php echo $model->firstname?>" >
 			</div>
 		</div>
 		<div class="col">

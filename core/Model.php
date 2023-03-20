@@ -69,4 +69,7 @@
 			];
 		}
 		abstract function rules():array;
+		public function hasError($attribute){
+			return $this->errors[$attribute] ?? false;
+		}
 	}
