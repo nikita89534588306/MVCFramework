@@ -7,7 +7,9 @@
 				<label for="firstname" class="form-label">Firstname</label>
 				<input type="text" name="firstname" class="form-control <?php echo $model->hasError('firstname') ? ' is-invalid' : '' ?>" 
 					value="<?php echo $model->firstname?>" >
+				<div class="invalid-feedback"><?php echo $model->getFirstError('firstname')?></div>
 			</div>
+
 		</div>
 		<div class="col">
 			<div class="mb-3">
