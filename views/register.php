@@ -1,5 +1,5 @@
 <h1>Create an account</h1>
-
+<?php echo app\core\form\Form::begin('', 'post'); ?>
 <form action="" method="post">
 	<div class="row">
 		<div class="col">  
@@ -9,7 +9,6 @@
 					value="<?php echo $model->firstname?>" >
 				<div class="invalid-feedback"><?php echo $model->getFirstError('firstname')?></div>
 			</div>
-
 		</div>
 		<div class="col">
 			<div class="mb-3">
