@@ -33,13 +33,25 @@
 						$this->addError($attribute, self::RULE_REQUIRED); //в массив в с ошибками добавляем ошибку "ПОЛЕ ОБЯЗАТЕЛЬНО" 
 					}
 					if($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL) ) $this->addError($attribute, self::RULE_EMAIL); //валидация по email
-					
+					if($ruleName === self::RULE_MIN  //если атрибут МИНИМАЛЬНОЕ КОЛИЧЕСТВО СИМВОЛОВ
+						&& strlen($value) < $rule['min'] //..и длина значения меньше минимального
+					){
+						$this->addError($attribute, self::RULE_MIN, $rule); ////в массив в с ошибками добавляем ошибку МИНИМАЛЬНОЕ КОЛИЧЕСТВО СИМВОЛОВ 
+					}
+					if($ruleName === self::RULE_MAX  //если атрибут МАКСИМАЛЬНОЕ КОЛИЧЕСТВО СИМВОЛОВ
+					&& strlen($value) > $rule['max'] //..и длина значения больше максимального
+					){
+						$this->addError($attribute, self::RULE_MAX, $rule); 
+					}
 				}
 			}
 			return empty($this->errors);
 		}
-		public function addError(string $attribute, string $rule){
+		public function addError(string $attribute, string $rule, $params = []){
 			$message = $this->errorMessages()[$rule] ?? '';
+			foreach($params as $key => $value){
+				$message = str_replace("{{$key}}", $value, $message); 
+			}
 			$this->errors[$attribute][] = $message;
 		}
 		public function errorMessages(){
