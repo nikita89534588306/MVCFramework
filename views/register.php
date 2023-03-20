@@ -5,7 +5,7 @@
 		<div class="col">  
 			<div class="mb-3">
 				<label for="firstname" class="form-label">Firstname</label>
-				<input type="text" name="firstname" class="form-control" >
+				<input type="text" name="firstname" class="form-control" value="<?php echo $model->firstname?>">
 			</div>
 		</div>
 		<div class="col">
