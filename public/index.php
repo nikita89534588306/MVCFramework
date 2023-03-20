@@ -5,8 +5,8 @@
 	require_once __DIR__ . "/../vendor/autoload.php";
 	//Указываем пространство имен и создаем экземпляр класса Приложение
 
-use app\controllers\AuthController;
-use app\controllers\SiteController;
+	use app\controllers\AuthController;
+	use app\controllers\SiteController;
 	use app\core\Application;
 
 	$app = new Application(dirname(__DIR__));
