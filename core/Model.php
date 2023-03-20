@@ -43,6 +43,11 @@
 					){
 						$this->addError($attribute, self::RULE_MAX, $rule); 
 					}
+					if($ruleName === self::RULE_MATCH 
+					&& $value !== $this->{$rule['match']}
+					){
+						$this->addError($attribute, self::RULE_MATCH, $rule); 
+					}
 				}
 			}
 			return empty($this->errors);
