@@ -8,7 +8,7 @@
 		public Router $router;
 		public Response $response;
 		public Controller $controller;
-
+		public Database $db;
 		public function getController():\app\core\Controller
 		{
 			return $this->controller;
@@ -25,7 +25,7 @@
 			$this->request = new Request(); //создаем экземпляр класса Запрос(Request)
 			$this->response = new Response();
 			$this->router = new Router($this->request, $this->response); //создаем экземпляр класса Маршрутиризатор(Router) и передаем экземпляр класса Запрос для получения текущего состояния URI 
-			
+			$this->db = new Database();
 		}
 		//данная функция выводи результат работы приложения
 		public function run(){
