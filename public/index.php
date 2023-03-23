@@ -3,13 +3,25 @@
 	
 	//Подключаем автозагрузчик Composer
 	require_once __DIR__ . "/../vendor/autoload.php";
-	//Указываем пространство имен и создаем экземпляр класса Приложение
-
 	use app\controllers\AuthController;
 	use app\controllers\SiteController;
 	use app\core\Application;
+	
+	//Указываем пространство имен и создаем экземпляр класса Приложение
+	$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+	$dotenv->load();
 
-	$app = new Application(dirname(__DIR__));
+
+
+	$config = [
+		'db' => [
+			'dsn' => $_ENV['DB_DNS'],
+			'user' => $_ENV['DB_USER'],
+			'password' => $_ENV['DB_PASSWORD'],
+		]
+	];
+
+	$app = new Application(dirname(__DIR__), $config);
 		
 	//Зарегистрируем маршруты для приложения
 	$app->router->get('/', [SiteController::class, 'home']);
