@@ -17,7 +17,7 @@
 		{
 			$this->controller = $setController;
 		}
-		public function __construct($rootPath){
+		public function __construct($rootPath, array $config){
 
 			self::$ROOT_DIR = $rootPath;
 			self::$app = $this;
@@ -25,7 +25,7 @@
 			$this->request = new Request(); //создаем экземпляр класса Запрос(Request)
 			$this->response = new Response();
 			$this->router = new Router($this->request, $this->response); //создаем экземпляр класса Маршрутиризатор(Router) и передаем экземпляр класса Запрос для получения текущего состояния URI 
-			$this->db = new Database();
+			$this->db = new Database($config['db']);
 		}
 		//данная функция выводи результат работы приложения
 		public function run(){
