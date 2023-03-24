@@ -2,7 +2,7 @@
 	namespace app\controllers;
 	use app\core\Controller;
 	use app\core\Request;
-	use app\models\RegisterModel;
+	use app\models\User;
 
 	class AuthController extends Controller{
 		public function login(){
@@ -12,7 +12,7 @@
 		public function register(Request $request){
 			
 		$this->setLayout("auth");
-		$registerModel = new RegisterModel(); //создаем модель для регистрации 
+		$registerModel = new User(); //создаем модель для регистрации 
 		
 		if($request->isPost()) { //если метод HTTP - POST
 			$registerModel->loadData($request->getBody()); //загрузаем данные в модель (данные и Запроса)

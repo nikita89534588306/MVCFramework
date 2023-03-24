@@ -1,13 +1,18 @@
 <?php
 	namespace app\models;
-	use app\core\Model;
+
+use app\core\DbModel;
+
 	
-	class RegisterModel extends Model{
+	class User extends DbModel{
 		public string $firstname = '';
 		public string $lastname = '';
 		public string $email = '';
 		public string $password = '';
 		public string $confirmPassword = '';
+
+		public function tableName():string{ return "users";}
+		public function attributes(): array { return ['firstname', 'lastname', 'email', 'password']; }
 
 		public function rules():array{ //правила для валидации данных
 			return [
@@ -23,12 +28,10 @@
 					self::RULE_REQUIRED, //поле confirmPassword должно быть заполнено 
 					[self::RULE_MATCH, 'match' => 'password'] //и совпадать с полем password 
 				],
-				
-				
 			];
 		}
 		
 		public function register() { //функция регистрации данных пользователя в БД
-			return 1;
+			return $this->save();
 		}
 	}
