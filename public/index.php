@@ -1,6 +1,6 @@
 <?php 
-	//echo "Точка входа в приложение index.php"; //Файл индекс является единой точкой входа в приложение.
-	
+//	echo "Точка входа в приложение index.php"; //Файл индекс является единой точкой входа в приложение.
+
 	//Подключаем автозагрузчик Composer
 	require_once __DIR__ . "/../vendor/autoload.php";
 	use app\controllers\AuthController;

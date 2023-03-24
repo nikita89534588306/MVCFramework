@@ -20,9 +20,11 @@ use app\core\Controller;
 			$user->loadData($request->getBody()); //загрузаем данные в модель (данные и Запроса)
 		
 			if($user->validate()  	// если пройдена валидация
-			&& $user->save() 	//и данные добавленны в бд(метод register уникальный для модели регистрации и описан в нутри класса) 
-			) Application::$app->response->redirect('/');  //перенаправляем на главную 
-			
+			&& $user->save() 		//и данные добавленны в бд(метод register уникальный для модели регистрации и описан в нутри класса) 
+			){
+				Application::$app->session->setFlash('success', 'Thanks for registering');
+				Application::$app->response->redirect('/');  //перенаправляем на главную 
+			}
 			return $this->render('register', //если регистрация не пройдена то выводим форму регистрации заново
 				//и передаем данные из модели в форму регистрации 
 				['model' => $user ]
