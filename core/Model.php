@@ -9,6 +9,8 @@
 		public const RULE_MIN = "min";
 		public const RULE_MAX = "max";
 		public const RULE_MATCH = "match";
+		public const RULE_UNIQUE = "unique";
+		
 
 		public function loadData($data){
 			foreach($data as $nameInputParam => $valueParam){ //перебираем массив данных полученных из аргумента функции и...
@@ -48,6 +50,16 @@
 					){
 						$this->addError($attribute, self::RULE_MATCH, $rule); 
 					}
+					if($ruleName === self::RULE_UNIQUE){
+						$className = $rule['class'];
+						$uniqueAttr = $rule['attribute'] ?? $attribute;
+						$tableName = $className::tableName();
+						$statement = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $uniqueAttr = :attr");
+						$statement->bindValue(":attr", $value);
+						$statement->execute();
+						$record = $statement->fetchObject();
+						if ($record) $this->addError($attribute,self::RULE_UNIQUE, ['field' => $attribute]);
+					}
 				}
 			}
 			return empty($this->errors);
@@ -65,7 +77,8 @@
 				self::RULE_EMAIL => 'Введите email адрес',
 				self::RULE_MIN => 'Минимальное количество символов {min}',
 				self::RULE_MAX => 'Максимальное количество символов {max}',
-				self::RULE_MATCH => 'Значение поля должно совпадать с {match}'
+				self::RULE_MATCH => 'Значение поля должно совпадать с {match}',
+				self::RULE_UNIQUE => 'Придумайте уникальное значение для поля {field}'
 			];
 		}
 		abstract function rules():array;

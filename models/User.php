@@ -24,7 +24,11 @@ use app\core\DbModel;
 			return [
 				'firstname' => [self::RULE_REQUIRED], //поле firstname должно быть заполнено 
 				'lastname' => [self::RULE_REQUIRED],
-				'email' => [self::RULE_REQUIRED, self::RULE_EMAIL], //должен быть заполненым и должен содержать email адрес
+				'email' => [
+					self::RULE_REQUIRED,
+					self::RULE_EMAIL,
+					[self::RULE_UNIQUE, 'class' => self::class]
+				], 
 				'password' => [
 					self::RULE_REQUIRED, //должен быть заполненым
 					[self::RULE_MIN, 'min' => 8], //минимальная длинна пароля 8 символов
@@ -38,7 +42,7 @@ use app\core\DbModel;
 		}
 		
 		public function save() { //функция регистрации данных пользователя в БД
-			$this->status = self::STATUS_DELETED;
+			$this->status = self::STATUS_INACTIVE;
 			$this->password = password_hash($this->password,PASSWORD_DEFAULT);
 			return parent::save();
 		}
