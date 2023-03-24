@@ -19,6 +19,15 @@ use app\core\DbModel;
 
 		public function tableName():string{ return "users";}
 		public function attributes(): array { return ['firstname', 'lastname', 'email', 'password', 'status']; }
+		public function labels(): array { 
+			return [
+				'firstname' => 'Имя',
+				'lastname' => 'Фамилия',
+				'email' => 'Email',
+				'password' => 'Пароль',
+				'confirmPassword' => 'Подтверждение пароля'
+			]; 
+		}
 
 		public function rules():array{ //правила для валидации данных
 			return [

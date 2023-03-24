@@ -19,6 +19,12 @@
 				}
 			}
 		}
+		public function labels(): array {
+			return [];
+		}
+		public function getLabel($attribute){
+			return $this->labels()[$attribute] ?? $attribute;
+		}
 		public array $errors = [];
 		public function validate(){
 			foreach($this->rules() as $attribute => $rules) {//$attribute - тоде самое что и поля модели, $rule - правила для неё
@@ -48,6 +54,7 @@
 					if($ruleName === self::RULE_MATCH 
 					&& $value !== $this->{$rule['match']}
 					){
+						$rule['match'] = $this->getLabel($rule['match']);
 						$this->addError($attribute, self::RULE_MATCH, $rule); 
 					}
 					if($ruleName === self::RULE_UNIQUE){
@@ -58,7 +65,7 @@
 						$statement->bindValue(":attr", $value);
 						$statement->execute();
 						$record = $statement->fetchObject();
-						if ($record) $this->addError($attribute,self::RULE_UNIQUE, ['field' => $attribute]);
+						if ($record) $this->addError($attribute,self::RULE_UNIQUE, ['field' => $this->getLabel($attribute)]);
 					}
 				}
 			}

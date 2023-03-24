@@ -10,10 +10,7 @@
 				$flashMessage['remove'] = true;
 			}
 			$_SESSION[self::FLASH_KEY] = $flashMessages;  
-			// echo '<pre>';
-			// var_dump($_SESSION[self::FLASH_KEY]);
-			// echo '</pre>';
-			
+
 		}
 		public function setFlash($key, $message){
 			$_SESSION[self::FLASH_KEY][$key] = [
