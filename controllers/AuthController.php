@@ -1,6 +1,8 @@
 <?php
 	namespace app\controllers;
-	use app\core\Controller;
+
+use app\core\Application;
+use app\core\Controller;
 	use app\core\Request;
 	use app\models\User;
 
@@ -19,7 +21,7 @@
 		
 			if($user->validate()  	// если пройдена валидация
 			&& $user->save() 	//и данные добавленны в бд(метод register уникальный для модели регистрации и описан в нутри класса) 
-			) return "Success";  //выводим сообщение об успешной регистрации
+			) Application::$app->response->redirect('/');  //перенаправляем на главную 
 			
 			return $this->render('register', //если регистрация не пройдена то выводим форму регистрации заново
 				//и передаем данные из модели в форму регистрации 
