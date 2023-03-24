@@ -31,7 +31,8 @@ use app\core\DbModel;
 			];
 		}
 		
-		public function register() { //функция регистрации данных пользователя в БД
-			return $this->save();
+		public function save() { //функция регистрации данных пользователя в БД
+			$this->password = password_hash($this->password,PASSWORD_DEFAULT);
+			return parent::save();
 		}
 	}
